@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
+    <title>JavaScript == 和 === - 智辉 - 博客园</title>
+    <meta property="og:description"
+          content="== 操作符（Equality，相等操作符） 相等操作符会做类型转换。 我们先来看看什么是类型转换（type coercion） 当操作符两边的操作数是不同类型时，其中一个操作数将转换为另一个操作数同">
+    <link type="text/css" rel="stylesheet"
+          href="/bundles/blog-common.css?v=giTNza-Of-PEt5UsELhFQAR7G6-bfaSa4oolcq7i9-o1">
+    <link type="text/css" rel="stylesheet" href="/blog/customcss/272782.css?v=b%2bjtZowJSJK3tLzK%2bDvdMCa4yOU%3d">
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet"
+          href="/skins/CodingLife/bundle-CodingLife-mobile.css?v=Xay8b9tTSw814nBzbOgvS6rrbcxrobMhvHJHdZAO9vI1">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/zhihuilai/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/zhihuilai/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/zhihuilai/wlwmanifest.xml">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script src="//common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">var currentBlogApp = 'zhihuilai', cb_enable_mathjax = false;
+    var isLogined = true;</script>
+    <script src="/bundles/blog-common.js?v=yRkjgN2sBQkB4hX-wirHxPomeBT9sB5dawr6ob7KIvg1"
+            type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+{{include '../src/header.html'}}
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            <a id="lnkBlogLogo" href="https://www.cnblogs.com/zhihuilai/"><img id="blogLogo"
+                                                                               src="/Skins/custom/images/logo.gif"
+                                                                               alt="返回主页"></a>
+
+            <!--done-->
+            <h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/zhihuilai/">智辉</a>
+            </h1>
+            <h2></h2>
+
+
+        </div><!--end: blogTitle 博客的标题和副标题 -->
+        <div id="navigator">
+
+            <ul id="navList">
+                <li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+                <li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/zhihuilai/">首页</a></li>
+                <li><a id="blog_nav_newpost" class="menu" rel="nofollow"
+                       href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+                <li><a id="blog_nav_contact" class="menu" rel="nofollow"
+                       href="https://msg.cnblogs.com/send/%E6%99%BA%E8%BE%89">联系</a></li>
+                <li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/zhihuilai/rss">订阅</a>
+                    <!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/zhihuilai/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>-->
+                </li>
+                <li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+            </ul>
+            <div class="blogStats">
+
+                <div id="blog_stats">
+                    <span id="stats_post_count">随笔 - 7&nbsp; </span>
+                    <span id="stats_article_count">文章 - 0&nbsp; </span>
+                    <span id="stats-comment_count">评论 - 34</span>
+                </div>
+
+            </div><!--end: blogStats -->
+        </div><!--end: navigator 博客导航栏 -->
+    </div><!--end: header 头部 -->
+
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+
+                <div id="post_detail">
+                    <!--done-->
+                    <div id="topics">
+                        <div class="post">
+                            <h1 class="postTitle">
+                                <a id="cb_post_title_url" class="postTitle2"
+                                   href="https://www.cnblogs.com/zhihuilai/p/5998293.html">JavaScript == 和 ===</a>
+                            </h1>
+                            <div class="clear"></div>
+                            <div class="postBody">
+                                <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><h2
+                                        id="操作符equality相等操作符">== 操作符（Equality，相等操作符）</h2>
+                                    <p>相等操作符会做类型转换。</p>
+                                    <h3 id="我们先来看看什么是类型转换type-coercion">我们先来看看什么是类型转换（type coercion）</h3>
+                                    <p>当操作符两边的操作数是不同类型时，其中一个操作数将转换为另一个操作数同类型的“等效”值。比如：</p>
+                                    <pre class="javascript"><code class="hljs"><span
+                                            class="hljs-number">12</span> - <span class="hljs-string">'3'</span> <span
+                                            class="hljs-comment">// 9, 将 string 类型转换成 number 类型，相当于 12 - Number('3')</span>
+<span class="hljs-number">12</span> - <span class="hljs-string">'hello'</span> <span class="hljs-comment">// NaN, 因为 Number('hello') 为 NaN，12 - NaN 为 NaN</span>
+<span class="hljs-string">'3'</span> - <span class="hljs-number">12</span> <span class="hljs-comment">// -9, 同样转成 number 类型</span>
+<span class="hljs-number">12</span> - <span class="hljs-literal">true</span> <span class="hljs-comment">// 11, Number(true) 为 1</span>
+<span class="hljs-literal">false</span> - <span class="hljs-number">12</span> <span class="hljs-comment">// -12, Number(false) 为 0</span>
+<span class="hljs-number">12</span> + <span class="hljs-string">'3'</span> <span class="hljs-comment">// 123, 将 12 转换成 string 类型，再连接 '3'</span></code></pre>
+                                    <p>看上去很简单对不对？减法将非 number 类型的转换成 number 类型的，加法将 number 类型转换成 string
+                                        类型的，真的这样吗？看下面：</p>
+                                    <pre class="javascript"><code class="hljs"><span
+                                            class="hljs-number">12</span> + <span class="hljs-literal">true</span> <span
+                                            class="hljs-comment">// 13，这里将布尔类型 true 转换成数值类型 1，相当于 12 + Number(true)</span></code></pre>
+                                    <p>从上面可以看出，“加法将 number 类型 转换成 string
+                                        类型”这个总结并不正确，事实上，类型转换并不单单看操作符，也就是并不只是看你做加法还是做减法，还要看你的类型，我们从上面的规律中做下总结：</p>
+                                    <ul>
+                                        <li>number - string 将 string 转换成 number</li>
+                                        <li>string - number 将 string 转换成 number</li>
+                                        <li>number - boolean 将 boolean 转成 number</li>
+                                        <li>boolean - number 将 boolean 转成 number</li>
+                                        <li>number + string 将 number 转成 string</li>
+                                        <li>number + boolean 将 boolean 转成 number</li>
+                                        <li>...</li>
+                                    </ul>
+                                    <p>有点眼花，也不是很有规律。有时候类型转换还可能会调用 toString 方法，加上操作符有很多，像 +、-、*、/、%、==、=== 等等，再加上 5
+                                        种基本数据类型 Number、String、Undefined、Null、Boolean，还有引用类型
+                                        Object，这样组合起来，类型转换的规律就很难掌握了。</p>
+                                    <p>比如下面这个：</p>
+                                    <pre class="javascript"><code class="hljs">[<span
+                                            class="hljs-number">1</span>] - <span class="hljs-number">3</span> <span
+                                            class="hljs-comment">// -2, 相当于 Number([1].toString()) - 3</span>
+[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>] - <span
+                                                class="hljs-number">3</span> <span class="hljs-comment">// NaN, 这里 toString 之后 会得到 '1,2,3'，转成 number 就是 NaN</span>
+[[]] - <span class="hljs-number">3</span> <span class="hljs-comment">// -3, [[]].toString 是 ""，"" 转成 number 类型是 0</span>
+<span class="hljs-number">5</span> * <span class="hljs-string">'1'</span> <span class="hljs-comment">// 5, Number('1') 为 1</span>
+<span class="hljs-number">5</span> * <span class="hljs-string">'true'</span> <span class="hljs-comment">// NaN, Number('true') 为 NaN</span>
+<span class="hljs-number">5</span> * <span class="hljs-literal">true</span> <span class="hljs-comment">// 5, Number(true) 为 1</span></code></pre>
+                                    <p>是不是觉得规则已经比较难记忆了？</p>
+                                    <h3 id="回到我们的-操作符">回到我们的 == 操作符</h3>
+                                    <p>相等操作符在比较时，如果左右两边的类型不同，也会将左边或者右边的操作数转换成与对方同类型的等效值。比如：</p>
+                                    <pre class="javascript"><code class="hljs"><span
+                                            class="hljs-number">12</span> == <span class="hljs-string">"12"</span> <span
+                                            class="hljs-comment">// true, string 类型转换成 number 类型</span>
+<span class="hljs-number">1</span> == <span class="hljs-literal">true</span> <span class="hljs-comment">// true, boolean 类型转换成 number 类型</span>
+<span class="hljs-literal">true</span> == <span class="hljs-string">'1'</span> <span class="hljs-comment">// true, 两者都转换成 number 再比较？ 还是 '1' 转换成 boolean 类型？</span>
+<span class="hljs-literal">true</span> == <span class="hljs-string">'2'</span> <span class="hljs-comment">// false?? Boolean('2') 可是等于 true 哦，结合上面一条语句，可以得出应该是两者都转换成 number 再比较</span></code></pre>
+                                    <p>再来看看 == 操作符的传递性</p>
+                                    <pre class="javascript"><code class="hljs"><span
+                                            class="hljs-number">0</span> == <span class="hljs-string">''</span> <span
+                                            class="hljs-comment">// true</span>
+<span class="hljs-number">0</span> == <span class="hljs-string">'0'</span> <span class="hljs-comment">// true</span>
+<span class="hljs-string">''</span> == <span class="hljs-string">'0'</span> <span
+                                                class="hljs-comment">// false</span></code></pre>
+                                    <p>可以看出，== 操作符不满足传递性</p>
+                                    <p>再来看几个例子：</p>
+                                    <pre class="javascript"><code class="hljs"><span class="hljs-literal">false</span> == <span
+                                            class="hljs-string">'false'</span>    <span
+                                            class="hljs-comment">// false</span>
+<span class="hljs-literal">false</span> == <span class="hljs-string">'0'</span>        <span class="hljs-comment">// true</span>
+
+<span class="hljs-literal">false</span> == <span class="hljs-literal">undefined</span>  <span class="hljs-comment">// false</span>
+<span class="hljs-literal">false</span> == <span class="hljs-literal">null</span>       <span class="hljs-comment">// false</span>
+<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>   <span class="hljs-comment">// true</span>
+
+<span class="hljs-string">' \t\r\n '</span> == <span class="hljs-number">0</span>     <span
+                                                class="hljs-comment">// true</span></code></pre>
+                                    <p>是不是觉得还能理解，但可能记不住了？所以，如果你不了解所有的规则，最好不要使用相等操作符，而是使用恒等操作符，下面这张图比较有说服力，来自 <a
+                                            href="http://dorey.github.io/JavaScript-Equality-Table/">dorey.github.io</a>，绿色表示相等操作符运算后结果为
+                                        true：<br>
+                                        <lzhimg src="http://images2015.cnblogs.com/blog/912254/201610/912254-20161025235619187-741352385.png"
+                                                alt="相等操作符"></lzhimg>
+                                    </p>
+                                    <p>规则这么多，掌握不好容易出错。</p>
+                                    <h2 id="操作符identity恒等操作符">=== 操作符（Identity，恒等操作符）</h2>
+                                    <p>很多人认为恒等操作符代表<strong>值相等</strong>，并且<strong>有相同的类型</strong>，但这是不对的，来看下面的例子：</p>
+                                    <pre class="javascript"><code class="hljs"><span class="hljs-keyword">var</span> a = [<span
+                                            class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span
+                                            class="hljs-number">3</span>],
+    b = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+    c = {},
+    d = {};
+<span class="hljs-built_in">console</span>.log(a === b); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(c === d); <span class="hljs-comment">// false</span></code></pre>
+                                    <p>可见，即使是相同的类型，而且值相等，也不一定恒等。</p>
+                                    <h3 id="恒等">恒等</h3>
+                                    <p>恒等操作符有三种情况：</p>
+                                    <ol>
+                                        <li>两个操作数都是引用类型，他们都引用同一个 object，即地址相同，则恒等成立。</li>
+                                        <li>两个操作数都是基本数据类型 （Boolean、Number、String、Undefined、Null），如果值相同，则恒等成立。</li>
+                                        <li>一个操作数是引用类型，另一个是基本数据类型，恒等不成立。</li>
+                                    </ol>
+                                    <p>上面的例子不等是因为地址不同。我们再来看看比较特殊的 String：</p>
+                                    <h3 id="string-的基本数据类型和基本包装类型">String 的基本数据类型和基本包装类型</h3>
+                                    <p>我们知道，基本数据类型不是引用类型，应该是没有方法的，比如 'hello world'，但你确实可以用 'hello world'.split("")
+                                        分割字符串，这是因为调用 split 这个方法的时候，后台就会创建一个基本包装类型的对象 (new String('hello
+                                        world'))，我们实质上是从这个基本包装类型里获取的方法，这样的基本包装类型还有 Boolean 和 Number。</p>
+                                    <p>要明确，'hello world' 只是一个基本数据类型，不管它是拼接而成还是直接以字面量的形式形成，比如：</p>
+                                    <pre class="javascript"><code class="hljs"><span class="hljs-keyword">var</span> a = <span
+                                            class="hljs-string">'hello'</span> + <span
+                                            class="hljs-string">' world'</span>,
+    b = <span class="hljs-string">'hello world'</span>;
+<span class="hljs-built_in">console</span>.log(a === b); <span class="hljs-comment">// true</span></code></pre>
+                                    <p>因为 a、b都是基本数据类型，所以直接比较值，是相等的，那么恒等成立。</p>
+                                    <p>但如果是这样：</p>
+                                    <pre class="javascript"><code class="hljs"><span class="hljs-keyword">var</span> a = <span
+                                            class="hljs-string">'hello world'</span>,
+    b = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">'hello world'</span>);
+<span class="hljs-built_in">console</span>.log(a === b); <span class="hljs-comment">// false, 因为 a 是基本数据类型，b 是引用类型，恒等不成立。</span></code></pre>
+                                    <p>来看一下恒等操作符的比较情况：<br>
+                                        <lzhimg src="http://images2015.cnblogs.com/blog/912254/201610/912254-20161026133749890-1993244620.png"
+                                                alt="恒等操作符"></lzhimg>
+                                    </p>
+                                    <p>所以 Douglas Crockford 建议我们永远不使用 == 操作符，而是使用 === 操作符</p>
+                                    <p>另外，在引用类型的比较上 == 和 === 的表现还是一致的，因为不论是否有类型转换，值都是地址，即比较的都是地址，地址相同则相同，如有不对，还望指出：</p>
+                                    <pre class="javascript"><code class="hljs"><span class="hljs-keyword">var</span> a = [<span
+                                            class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span
+                                            class="hljs-number">3</span>],
+    b = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+    c = {},
+    d = {},
+    e = a;
+<span class="hljs-built_in">console</span>.log(a === b); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(c === d); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(a == b); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(c == d); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(a == e); <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log(a === e); <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">console</span>.log([<span class="hljs-number">0</span>] == (<span
+                                                class="hljs-keyword">new</span> <span
+                                                class="hljs-built_in">String</span>(<span class="hljs-string">"0"</span>))); <span
+                                                class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log([<span class="hljs-number">0</span>] === (<span
+                                                class="hljs-keyword">new</span> <span
+                                                class="hljs-built_in">String</span>(<span class="hljs-string">"0"</span>))); <span
+                                                class="hljs-comment">// false</span></code></pre>
+                                    <blockquote>
+                                        <p>参考<br>
+                                            <a href="http://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons">Which
+                                                equals operator (== vs ===) should be used in JavaScript
+                                                comparisons?</a><br>
+                                            <a href="http://dorey.github.io/JavaScript-Equality-Table/">JavaScript-Equality-Table</a><br>
+                                            《JavaScript 高级程序设计》</p>
+                                    </blockquote>
+                                </div>
+                                <div id="MySignature"></div>
+                                <div class="clear"></div>
+                                <div id="blog_post_info_block">
+                                    <div id="BlogPostCategory"></div>
+                                    <div id="EntryTag">标签: <a href="https://www.cnblogs.com/zhihuilai/tag/JavaScript/">JavaScript</a>,
+                                        <a href="https://www.cnblogs.com/zhihuilai/tag/%E5%9F%BA%E7%A1%80/">基础</a></div>
+                                    <div id="blog_post_info">
+                                        <div id="green_channel">
+                                            <a href="javascript:void(0);" id="green_channel_digg"
+                                               onclick="DiggIt(5998293,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+                                            <a id="green_channel_follow"
+                                               onclick="follow('178a1d67-cce8-e511-9fc1-ac853d9f53cc');"
+                                               href="javascript:void(0);">关注我</a>
+                                            <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;"
+                                               href="javascript:void(0);">收藏该文</a>
+                                            <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博"
+                                               onclick="ShareToTsina()"><img
+                                                    src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+                                            <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信"
+                                               onclick="shareOnWechat()"><img
+                                                    src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+                                        </div>
+                                        <div id="author_profile">
+                                            <div id="author_profile_info" class="author_profile_info">
+                                                <a href="http://home.cnblogs.com/u/zhihuilai/" target="_blank"><img
+                                                        src="//pic.cnblogs.com/face/912254/20170207140256.png"
+                                                        class="author_avatar" alt=""></a>
+                                                <div id="author_profile_detail" class="author_profile_info">
+                                                    <a href="http://home.cnblogs.com/u/zhihuilai/">智辉</a><br>
+                                                    <a href="http://home.cnblogs.com/u/zhihuilai/followees">关注 -
+                                                        11</a><br>
+                                                    <a href="http://home.cnblogs.com/u/zhihuilai/followers">粉丝 - 13</a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div id="author_profile_honor"></div>
+                                            <div id="author_profile_follow">
+                                            </div>
+                                        </div>
+                                        <div id="div_digg">
+                                            <div class="diggit" onclick="votePost(5998293,'Digg')">
+                                                <span class="diggnum" id="digg_count">11</span>
+                                            </div>
+                                            <div class="buryit" onclick="votePost(5998293,'Bury')">
+                                                <span class="burynum" id="bury_count">0</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="diggword" id="digg_tips">
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            currentDiggType = 0;
+                                        </script>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div id="post_next_prev"><a href="https://www.cnblogs.com/zhihuilai/p/5985831.html"
+                                                                class="p_n_p_prefix">« </a> 上一篇：<a
+                                            href="https://www.cnblogs.com/zhihuilai/p/5985831.html"
+                                            title="发布于2016-10-22 00:17">JavaScript null 和 undefined</a><br><a
+                                            href="https://www.cnblogs.com/zhihuilai/p/6405228.html"
+                                            class="p_n_p_prefix">» </a> 下一篇：<a
+                                            href="https://www.cnblogs.com/zhihuilai/p/6405228.html"
+                                            title="发布于2017-02-16 14:03">记一次测试环境、正式环境发布遇到的问题及总结</a><br></div>
+                                </div>
+
+
+                            </div>
+                            <div class="postDesc">posted @ <span id="post-date">2016-10-26 14:25</span> <a
+                                    href="https://www.cnblogs.com/zhihuilai/">智辉</a> 阅读(<span
+                                    id="post_view_count">566</span>) 评论(<span id="post_comment_count">6</span>) <a
+                                    href="https://i.cnblogs.com/EditPosts.aspx?postid=5998293" rel="nofollow">编辑</a> <a
+                                    href="#" onclick="AddToWz(5998293);return false;">收藏</a></div>
+                        </div>
+                        <script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+                        <script>markdown_highlight();</script>
+                        <script type="text/javascript">var allowComments = true, cb_blogId = 272782,
+                            cb_entryId = 5998293, cb_blogApp = currentBlogApp,
+                            cb_blogUserGuid = '178a1d67-cce8-e511-9fc1-ac853d9f53cc',
+                            cb_entryCreatedDate = '2016/10/26 14:25:00';
+                        loadViewCount(cb_entryId);
+                        var cb_postType = 1;</script>
+
+                    </div><!--end: topics 文章、评论容器-->
+                </div>
+                <a name="!comments"></a>
+                <div id="blog-comments-placeholder">
+                    <div id="comments_pager_top"></div>
+                    <br>
+                    <div class="feedback_area_title">评论列表</div>
+                    <div class="feedbackNoItems"></div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return ReplyComment(3541304,'NbThZJC5J53/TY0gV5KEJnxSGhtMptMxvl4wukMMA6BOWpJeBYPoQg==')">回复</a><a
+                                    href="javascript:void(0);"
+                                    onclick="return QuoteComment(3541304,'NbThZJC5J53/TY0gV5KEJnxSGhtMptMxvl4wukMMA6BOWpJeBYPoQg==')">引用</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3541304,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3541304" class="layer">#1楼</a><a name="3541304" id="comment_anchor_3541304"></a>
+                            <span class="comment_date">2016-10-26 15:30</span> <a id="a_comment_author_3541304"
+                                                                                  href="https://www.cnblogs.com/fonour/"
+                                                                                  target="_blank">Fonour</a> <a
+                                href="http://msg.cnblogs.com/send/Fonour" title="发送站内短消息"
+                                class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3541304" class="blog_comment_body">总结的不错，支持。</div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3541304,'Digg',this)">支持(1)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3541304,'Bury',this)">反对(0)</a></div>
+                            <span id="comment_3541304_avatar" style="display:none;">http://pic.cnblogs.com/face/816310/20160808183701.png</span>
+                        </div>
+                    </div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return GetCommentBody(3541387)">修改</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3541387,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3541387" class="layer">#2楼</a><a name="3541387"
+                                                                       id="comment_anchor_3541387"></a>[<span
+                                class="louzhu">楼主</span>] <span class="comment_date">2016-10-26 16:33</span> <a
+                                id="a_comment_author_3541387" href="https://www.cnblogs.com/zhihuilai/" target="_blank">智辉</a>
+                            <a href="http://msg.cnblogs.com/send/%E6%99%BA%E8%BE%89" title="发送站内短消息"
+                               class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3541387" class="blog_comment_body"><a href="#3541304" title="查看所回复的评论"
+                                                                                        onclick="commentManager.renderComments(0,50,3541304);">@</a>
+                                Fonour<br>谢谢！
+                            </div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3541387,'Digg',this)">支持(0)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3541387,'Bury',this)">反对(0)</a></div>
+                            <span id="comment_3541387_avatar" style="display:none;">http://pic.cnblogs.com/face/912254/20170207140256.png</span>
+                        </div>
+                    </div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return ReplyComment(3541810,'ncsY1IJSF8ZLCMNpRbjRSC7lpdTkB21DNm/LA0xK6ezj2O7kAvhBfg==')">回复</a><a
+                                    href="javascript:void(0);"
+                                    onclick="return QuoteComment(3541810,'ncsY1IJSF8ZLCMNpRbjRSC7lpdTkB21DNm/LA0xK6ezj2O7kAvhBfg==')">引用</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3541810,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3541810" class="layer">#3楼</a><a name="3541810" id="comment_anchor_3541810"></a>
+                            <span class="comment_date">2016-10-27 09:55</span> <a id="a_comment_author_3541810"
+                                                                                  href="https://www.cnblogs.com/superxiaoquan/"
+                                                                                  target="_blank">super-xiaoquan</a> <a
+                                href="http://msg.cnblogs.com/send/super-xiaoquan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3541810" class="blog_comment_body">hao</div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3541810,'Digg',this)">支持(0)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3541810,'Bury',this)">反对(0)</a></div>
+                            <span id="comment_3541810_avatar" style="display:none;">http://pic.cnblogs.com/face/947656/20180621104230.png</span>
+                        </div>
+                    </div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return ReplyComment(3541811,'ncsY1IJSF8ZLCMNpRbjRSC7lpdTkB21DNm/LA0xK6ezj2O7kAvhBfg==')">回复</a><a
+                                    href="javascript:void(0);"
+                                    onclick="return QuoteComment(3541811,'ncsY1IJSF8ZLCMNpRbjRSC7lpdTkB21DNm/LA0xK6ezj2O7kAvhBfg==')">引用</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3541811,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3541811" class="layer">#4楼</a><a name="3541811" id="comment_anchor_3541811"></a>
+                            <span class="comment_date">2016-10-27 09:55</span> <a id="a_comment_author_3541811"
+                                                                                  href="https://www.cnblogs.com/superxiaoquan/"
+                                                                                  target="_blank">super-xiaoquan</a> <a
+                                href="http://msg.cnblogs.com/send/super-xiaoquan" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3541811" class="blog_comment_body">;;;</div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3541811,'Digg',this)">支持(0)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3541811,'Bury',this)">反对(0)</a></div>
+                            <span id="comment_3541811_avatar" style="display:none;">http://pic.cnblogs.com/face/947656/20180621104230.png</span>
+                        </div>
+                    </div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return ReplyComment(3542178,'9lo69dHQbB/nXNg8G88A1ACR9ohxmEeE+IMk6JbfJcOrpIdTu6yIYw==')">回复</a><a
+                                    href="javascript:void(0);"
+                                    onclick="return QuoteComment(3542178,'9lo69dHQbB/nXNg8G88A1ACR9ohxmEeE+IMk6JbfJcOrpIdTu6yIYw==')">引用</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3542178,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3542178" class="layer">#5楼</a><a name="3542178" id="comment_anchor_3542178"></a>
+                            <span class="comment_date">2016-10-27 15:06</span> <a id="a_comment_author_3542178"
+                                                                                  href="http://home.cnblogs.com/u/1035808/"
+                                                                                  target="_blank">小不了</a> <a
+                                href="http://msg.cnblogs.com/send/%E5%B0%8F%E4%B8%8D%E4%BA%86" title="发送站内短消息"
+                                class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3542178" class="blog_comment_body">
+                                博主大大，请问我能转载到我的网站（dreawer.com）吗？会注明来源的~
+                            </div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3542178,'Digg',this)">支持(0)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3542178,'Bury',this)">反对(0)</a></div>
+                        </div>
+                    </div>
+
+                    <div class="feedbackItem">
+                        <div class="feedbackListSubtitle">
+                            <div class="feedbackManage">
+                                &nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);"
+                                                                             onclick="return GetCommentBody(3542274)">修改</a><a
+                                    href="javascript:void(0);" onclick="return DelComment(3542274,this, 5998293)">删除</a></span>
+                            </div>
+                            <a href="#3542274" class="layer">#6楼</a><a name="3542274"
+                                                                       id="comment_anchor_3542274"></a>[<span
+                                class="louzhu">楼主</span>]<span id="comment-maxId"
+                                                               style="display:none;">3542274</span><span
+                                id="comment-maxDate" style="display:none;">2016/10/27 16:18:49</span> <span
+                                class="comment_date">2016-10-27 16:18</span> <a id="a_comment_author_3542274"
+                                                                                href="https://www.cnblogs.com/zhihuilai/"
+                                                                                target="_blank">智辉</a> <a
+                                href="http://msg.cnblogs.com/send/%E6%99%BA%E8%BE%89" title="发送站内短消息"
+                                class="sendMsg2This">&nbsp;</a>
+                        </div>
+                        <div class="feedbackCon">
+                            <div id="comment_body_3542274" class="blog_comment_body"><a href="#3542178" title="查看所回复的评论"
+                                                                                        onclick="commentManager.renderComments(0,50,3542178);">@</a>
+                                小不了<br>欢迎转载
+                            </div>
+                            <div class="comment_vote"><a href="javascript:void(0);" class="comment_digg"
+                                                         onclick="return voteComment(3542274,'Digg',this)">支持(0)</a><a
+                                    href="javascript:void(0);" class="comment_bury"
+                                    onclick="return voteComment(3542274,'Bury',this)">反对(0)</a></div>
+                            <span id="comment_3542274_avatar" style="display:none;">http://pic.cnblogs.com/face/912254/20170207140256.png</span>
+                        </div>
+                    </div>
+                    <div id="comments_pager_bottom"></div>
+                </div>
+                <script type="text/javascript">var commentManager = new blogCommentManager();
+                commentManager.renderComments(0);</script>
+                <div id="comment_form" class="commentform">
+                    <a name="commentform"></a>
+                    <div id="divCommentShow"></div>
+                    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);"
+                                                                                 onclick="return RefreshCommentList();"
+                                                                                 id="lnk_RefreshComments" runat="server"
+                                                                                 clientidmode="Static">刷新评论</a><a
+                            href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+                    <div id="comment_form_container">
+                        <script type="text/javascript"
+                                src="//mention.cnblogs.com/bundles/mention.js?id=20160615"></script>
+                        <div id="commentform_title">发表评论</div>
+                        <span id="tip_comment" style="color:Red"></span>
+                        <p>
+                            昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"
+                                      value="智辉">
+                        </p>
+                        <div class="commentbox_main">
+                            <div class="commentbox_title">
+                                <div class="commentbox_title_left">评论内容：</div>
+                                <div class="commentbox_title_right">
+                                    <img id="ubb_quote" class="comment_icon"
+                                         src="//static.cnblogs.com/images/ubb/quote.gif" alt="引用" title="添加引用"
+                                         onclick="insertUBB('tbCommentBody','quote')">
+                                    <img id="ubb_bold" class="comment_icon" src="//static.cnblogs.com/images/ubb/b.png"
+                                         alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
+                                    <img id="ubb_url" class="comment_icon" src="//static.cnblogs.com/images/ubb/lk.png"
+                                         alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
+                                    <img id="ubb_indent" class="comment_icon"
+                                         src="//static.cnblogs.com/images/ubb/indent.png" alt="缩进" title="添加首行缩进"
+                                         onclick="insertIndent('tbCommentBody')">
+                                    <img id="ubb_code" class="comment_icon"
+                                         src="//static.cnblogs.com/images/ubb/InsertCode.gif" alt="代码" title="添加代码"
+                                         onclick="insertUbbCode()">
+                                    <img id="ubb_img" class="comment_icon" src="//static.cnblogs.com/images/ubb/img.gif"
+                                         alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <textarea id="tbCommentBody" class="comment_textarea"></textarea>
+                        </div>
+                        <p id="commentbox_opt">
+                            <input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+                            <span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);"
+                                                                                       onclick="return CancelCommentEdit()">不改了</a></span>
+                            <a href="javascript:void(0);" onclick="return logout();">退出</a>
+                        </p>
+                        <div id="tip_comment2" style="color:Red"></div>
+                        <p>
+                            [Ctrl+Enter快捷键提交]
+                        </p>
+                        <div style="display:none">
+                            <span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+                            <span id="span_parent_id"></span>
+                            <span id="span_comment_replyto"></span>
+                            <span id="span_comment_posted"></span>
+                        </div>
+                    </div>
+                    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+                    <div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码:
+                        大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="https://www.linuxprobe.com/chapter-00.html"
+                                                         target="_blank"
+                                                         onclick="ga('send', 'event', 'Link', 'click', 'T2-linuxprobe')">【免费】要想入门学习Linux系统技术，你应该先选择一本适合自己的书籍</a><br><a
+                            href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community"
+                            target="_blank" onclick="ga('send', 'event', 'Link', 'click', 'T2-SpreadJS')">【前端】SpreadJS表格控件，可嵌入应用开发的在线Excel</a><br><a
+                            href="https://cloud.tencent.com/developer/edu/major-100005?fromSource=gwzcw.1312543.1312543.1312543#course-1274"
+                            target="_blank"
+                            onclick="ga('send', 'event', 'Link', 'click', 'T2-微信支付')">【直播】如何快速接入微信支付功能</a><br></div>
+                    <div id="opt_under_post"></div>
+                    <div id="cnblogs_c1" class="c_ad_block"><a
+                            href="https://cloud.tencent.com/act/special/rav?fromSource=gwzcw.1312547.1312547.1312547"
+                            target="_blank"><img width="300" height="250"
+                                                 src="https://img2018.cnblogs.com/news/24442/201809/24442-20180914091419057-283402001.jpg"
+                                                 alt="腾讯云" onclick="ga('send', 'event', 'Link', 'click', 'C1');"></a>
+                    </div>
+                    <div id="under_post_news">
+                        <div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> · <a href="https://news.cnblogs.com/n/607948/"
+                                                                               target="_blank">微软Bing搜寻引擎开始启用AMP移动页面加速技术</a><br>
+                            · <a href="https://news.cnblogs.com/n/607947/" target="_blank">支付宝被盗刷获赔20万 剧情逆转
+                                女子被判5年</a><br> · <a href="https://news.cnblogs.com/n/607946/" target="_blank">谷歌CEO发备忘录警告职工不许为任何政治观点做特别设计</a><br>
+                            · <a href="https://news.cnblogs.com/n/607945/" target="_blank">MariaDB数据库动作频频，基金会CEO宣布离职</a><br>
+                            · <a href="https://news.cnblogs.com/n/607944/" target="_blank">香港段投入运营 广深港高铁全线开通运营</a><br>»
+                            <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div>
+                    </div>
+                    <div id="cnblogs_c2" class="c_ad_block"><a
+                            href="http://clickc.admaster.com.cn/c/a113319,b2799157,c1705,i0,m101,8a1,8b3,h"
+                            target="_blank"><img width="468" height="60"
+                                                 src="https://img2018.cnblogs.com/news/24442/201809/24442-20180916205959082-1265433055.jpg"
+                                                 alt="华为云HC0917" onclick="ga('send', 'event', 'Link', 'click', 'C2');"></a>
+                    </div>
+                    <div id="under_post_kb">
+                        <div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br>
+                            <div id="kb_recent"> · <a href="https://kb.cnblogs.com/page/606682/" target="_blank">为什么说
+                                Java 程序员必须掌握 Spring Boot ？</a><br> · <a href="https://kb.cnblogs.com/page/606645/"
+                                                                        target="_blank">在学习中，有一个比掌握知识更重要的能力</a><br> · <a
+                                    href="https://kb.cnblogs.com/page/603663/" target="_blank">如何招到一个靠谱的程序员</a><br> · <a
+                                    href="https://kb.cnblogs.com/page/573614/" target="_blank">一个故事看懂“区块链”</a><br> · <a
+                                    href="https://kb.cnblogs.com/page/603697/" target="_blank">被踢出去的用户</a><br></div>
+                            » <a href="https://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div>
+                    </div>
+                    <div id="HistoryToday" class="c_ad_block"></div>
+                    <script type="text/javascript">
+                        fixPostBody();
+                        setTimeout(function () {
+                            incrementViewCount(cb_entryId);
+                        }, 50);
+                        deliverAdT2();
+                        deliverAdC1();
+                        deliverAdC2();
+                        loadNewsAndKb();
+                        loadBlogSignature();
+                        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+                        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+                        loadOptUnderPost();
+                        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+                    </script>
+                </div>
+
+
+            </div><!--end: forFlow -->
+        </div><!--end: mainContent 主体内容容器-->
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+
+                <!--done-->
+                <div class="newsItem">
+                    <h3 class="catListTitle">公告</h3>
+                    <div id="blog-news">
+                        {{include '../src/sidebar.html'}}
+                        <div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/zhihuilai/">智辉</a><br>园龄：<a
+                                href="https://home.cnblogs.com/u/zhihuilai/" title="入园时间：2016-03-13">2年6个月</a><br>粉丝：<a
+                                href="https://home.cnblogs.com/u/zhihuilai/followers/">13</a><br>关注：<a
+                                href="https://home.cnblogs.com/u/zhihuilai/followees/">11</a>
+                            <div id="p_b_follow"></div>
+                            <script>getFollowStatus('178a1d67-cce8-e511-9fc1-ac853d9f53cc')</script>
+                        </div>
+                    </div>
+                    <script type="text/javascript">loadBlogNews();</script>
+                </div>
+
+                <div id="blog-calendar" style="">
+                    <table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+                        <tbody>
+                        <tr>
+                            <td colspan="7">
+                                <table class="CalTitle" cellspacing="0">
+                                    <tbody>
+                                    <tr>
+                                        <td class="CalNextPrev"><a href="javascript:void(0);"
+                                                                   onclick="loadBlogCalendar('2018/08/01');return false;">&lt;</a>
+                                        </td>
+                                        <td align="center">2018年9月</td>
+                                        <td class="CalNextPrev" align="right"><a href="javascript:void(0);"
+                                                                                 onclick="loadBlogCalendar('2018/10/01');return false;">&gt;</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+                            <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+                            <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+                            <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+                            <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+                            <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+                            <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+                        </tr>
+                        <tr>
+                            <td class="CalOtherMonthDay" align="center">26</td>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                            <td class="CalOtherMonthDay" align="center">31</td>
+                            <td class="CalWeekendDay" align="center">1</td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">2</td>
+                            <td align="center">3</td>
+                            <td align="center">4</td>
+                            <td align="center">5</td>
+                            <td align="center">6</td>
+                            <td align="center">7</td>
+                            <td class="CalWeekendDay" align="center">8</td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">9</td>
+                            <td align="center">10</td>
+                            <td align="center">11</td>
+                            <td align="center">12</td>
+                            <td align="center">13</td>
+                            <td align="center">14</td>
+                            <td class="CalWeekendDay" align="center">15</td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">16</td>
+                            <td align="center">17</td>
+                            <td align="center">18</td>
+                            <td align="center">19</td>
+                            <td align="center">20</td>
+                            <td align="center">21</td>
+                            <td class="CalWeekendDay" align="center">22</td>
+                        </tr>
+                        <tr>
+                            <td class="CalTodayDay" align="center">23</td>
+                            <td align="center">24</td>
+                            <td align="center">25</td>
+                            <td align="center">26</td>
+                            <td align="center">27</td>
+                            <td align="center">28</td>
+                            <td class="CalWeekendDay" align="center">29</td>
+                        </tr>
+                        <tr>
+                            <td class="CalWeekendDay" align="center">30</td>
+                            <td class="CalOtherMonthDay" align="center">1</td>
+                            <td class="CalOtherMonthDay" align="center">2</td>
+                            <td class="CalOtherMonthDay" align="center">3</td>
+                            <td class="CalOtherMonthDay" align="center">4</td>
+                            <td class="CalOtherMonthDay" align="center">5</td>
+                            <td class="CalOtherMonthDay" align="center">6</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <script type="text/javascript">loadBlogDefaultCalendar();</script>
+
+                <div id="leftcontentcontainer">
+                    <div id="blog-sidecolumn">
+                        <div id="sidebar_search" class="sidebar-block">
+                            <div id="sidebar_search" class="mySearch">
+                                <h3 class="catListTitle">搜索</h3>
+                                <div id="sidebar_search_box">
+                                    <div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q"
+                                                                                      onkeydown="return zzk_go_enter(event);"
+                                                                                      class="input_my_zzk">&nbsp;<input
+                                            onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+                                    </div>
+                                    <div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q"
+                                                                                         id="google_q"
+                                                                                         onkeydown="return google_go_enter(event)"
+                                                                                         class="input_my_zzk">&nbsp;<input
+                                            onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="sidebar_shortcut" class="sidebar-block">
+                            <div class="catListLink">
+                                <h3 class="catListTitle">常用链接</h3>
+                                <ul>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/p/" title="我的博客的随笔列表">我的随笔</a></li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/MyComments.html" title="我发表过的评论列表">我的评论</a>
+                                    </li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/OtherPosts.html" title="我评论过的随笔列表">我的参与</a>
+                                    </li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/RecentComments.html"
+                                           title="我的博客的评论列表">最新评论</a></li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/" title="我的博客的标签列表">我的标签</a></li>
+                                </ul>
+                                <div id="itemListLin_con" style="display:none;">
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sidebar_toptags" class="sidebar-block">
+                            <div class="catListTag">
+                                <h3 class="catListTitle">我的标签</h3>
+                                <ul>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/%E5%9F%BA%E7%A1%80/">基础</a>(4)
+                                    </li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/JavaScript/">JavaScript</a>(3)
+                                    </li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/%E5%AE%9E%E6%88%98/">实战</a>(2)
+                                    </li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/MongoDB/">MongoDB</a>(1)</li>
+                                    <li><a href="https://www.cnblogs.com/zhihuilai/tag/Node.js/">Node.js</a>(1)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="sidebar_categories">
+                            <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                                <h3 class="catListTitle">随笔档案</h3>
+
+                                <ul>
+
+                                    <li><a id="CatList_LinkList_0_Link_0"
+                                           href="https://www.cnblogs.com/zhihuilai/archive/2017/02.html">2017年2月 (1)</a>
+                                    </li>
+
+                                    <li><a id="CatList_LinkList_0_Link_1"
+                                           href="https://www.cnblogs.com/zhihuilai/archive/2016/10.html">2016年10月
+                                        (2)</a></li>
+
+                                    <li><a id="CatList_LinkList_0_Link_2"
+                                           href="https://www.cnblogs.com/zhihuilai/archive/2016/08.html">2016年8月 (4)</a>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+                        <div id="sidebar_recentcomments" class="sidebar-block">
+                            <div id="recent_comments_wrap">
+                                <div class="catListComment">
+                                    <h3 class="catListTitle">最新评论</h3>
+
+                                    <div id="RecentCommentsBlock">
+                                        <ul>
+                                            <li class="recent_comment_title"><a
+                                                    href="https://www.cnblogs.com/zhihuilai/p/5810965.html#3788293">1.
+                                                Re:JavaScript 闭包总结 （深入理解）</a></li>
+                                            <li class="recent_comment_body">@天河区腻共勉...</li>
+                                            <li class="recent_comment_author">--智辉</li>
+                                            <li class="recent_comment_title"><a
+                                                    href="https://www.cnblogs.com/zhihuilai/p/5810965.html#3775074">2.
+                                                Re:JavaScript 闭包总结 （深入理解）</a></li>
+                                            <li class="recent_comment_body">好 终于理解了，谢谢<br></li>
+                                            <li class="recent_comment_author">--天河区腻</li>
+                                            <li class="recent_comment_title"><a
+                                                    href="https://www.cnblogs.com/zhihuilai/p/5813733.html#3574369">3.
+                                                Re:JavaScript this 总结（含 ES6）</a></li>
+                                            <li class="recent_comment_body">@2byte你好，lzh.sayName().apply(iny) 这句，apply
+                                                修改了 lzh.sayName() 返回函数的 this 指向，使得 this 指向 iny，如果代码中是非箭头函......
+                                            </li>
+                                            <li class="recent_comment_author">--智辉</li>
+                                            <li class="recent_comment_title"><a
+                                                    href="https://www.cnblogs.com/zhihuilai/p/5813733.html#3570508">4.
+                                                Re:JavaScript this 总结（含 ES6）</a></li>
+                                            <li class="recent_comment_body">博主你好引用var name = 'window';var lzh = { name:
+                                                'lzh', sayName: function(){ return ()=&gt; { .........
+                                            </li>
+                                            <li class="recent_comment_author">--2byte</li>
+                                            <li class="recent_comment_title"><a
+                                                    href="https://www.cnblogs.com/zhihuilai/p/5810965.html#3549327">5.
+                                                Re:JavaScript 闭包总结 （深入理解）</a></li>
+                                            <li class="recent_comment_body">@智辉一起加油...</li>
+                                            <li class="recent_comment_author">--_NKi</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sidebar_topviewedposts" class="sidebar-block">
+                            <div id="topview_posts_wrap">
+                                <div class="catListView">
+                                    <h3 class="catListTitle">阅读排行榜</h3>
+                                    <div id="TopViewPostsBlock">
+                                        <ul>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5810965.html">1. JavaScript
+                                                闭包总结(1827)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5785125.html">2.
+                                                微信公众号开发总结(Node.js + express + winston)(1245)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5813733.html">3. JavaScript
+                                                this 总结(978)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5767012.html">4. JavaScript
+                                                事件总结(636)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/6405228.html">5.
+                                                记一次测试环境、正式环境发布遇到的问题及总结(620)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sidebar_topcommentedposts" class="sidebar-block">
+                            <div id="topfeedback_posts_wrap">
+                                <div class="catListFeedback">
+                                    <h3 class="catListTitle">评论排行榜</h3>
+                                    <div id="TopFeedbackPostsBlock">
+                                        <ul>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5810965.html">1. JavaScript
+                                                闭包总结(19)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5998293.html">2. JavaScript
+                                                == 和 ===(6)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5813733.html">3. JavaScript
+                                                this 总结(3)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5985831.html">4. JavaScript
+                                                null 和 undefined(2)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5767012.html">5. JavaScript
+                                                事件总结(2)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sidebar_topdiggedposts" class="sidebar-block">
+                            <div id="topdigg_posts_wrap">
+                                <div class="catListView">
+                                    <h3 class="catListTitle">推荐排行榜</h3>
+                                    <div id="TopDiggPostsBlock">
+                                        <ul>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5810965.html">1. JavaScript
+                                                闭包总结(13)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5998293.html">2. JavaScript
+                                                == 和 ===(11)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/6405228.html">3.
+                                                记一次测试环境、正式环境发布遇到的问题及总结(4)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5767012.html">4. JavaScript
+                                                事件总结(4)</a></li>
+                                            <li><a href="https://www.cnblogs.com/zhihuilai/p/5785125.html">5.
+                                                微信公众号开发总结(Node.js + express + winston)(3)</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">loadBlogSideColumn();</script>
+                </div>
+
+            </div><!--end: sideBarMain -->
+        </div><!--end: sideBar 侧边栏容器 -->
+        <div class="clear"></div>
+    </div><!--end: main -->
+    <div class="clear"></div>
+    <div id="footer">
+
+        <!--done-->
+        Copyright ©2018 智辉
+    </div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+{{include '../src/footer.html'}}
+<!--PageEndHtml Block End-->
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb-base/legacy",
+  "env": {
+    "browser": true
+  },
+  "plugins": ["babel"],
+  "parser": "babel-eslint",
+  "globals": {
+    "mqq": true,
+    "kgbridge": true,
+    "browser": true,
+    "qb_bridge": true,
+    "TenvideoJSBridge": true,
+    "TcsJSBridge": true,
+    "tbs": true,
+    "IS_SERVER": true
+  },
+  "rules": {
+    "no-console": ["error", { "allow": ["log", "warn", "error", "info"] }], // console.log 正式环境会被 drop 掉
+    "no-alert": "off"
+  }
+}
