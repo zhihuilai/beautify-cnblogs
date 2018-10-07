@@ -19,11 +19,19 @@ let dev = {
             filename: "post.html",
             template: './example/post-template.html',
             inject: false,
+            templateParameters: {
+                title: 'hello',
+                env: 'development',
+            },
         }),
         new HtmlWebpackPlugin({
             filename: "list.html",
             template: './example/list-template.html',
             inject: false,
+            templateParameters: {
+                title: '列表页',
+                env: 'development',
+            },
         }),
     ],
     output: {

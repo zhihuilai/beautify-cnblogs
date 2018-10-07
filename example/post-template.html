@@ -615,8 +615,29 @@
                 <!--done-->
                 <div class="newsItem">
                     <h3 class="catListTitle">公告</h3>
-                    <div id="blog-news">
+                    <div id="beautify-cnblogs-sidebar-custom-wrapper">
                         {{include '../src/sidebar.html'}}
+                    </div>
+                    <script>
+                        try {
+                            // 开发时用
+                            var wrapper = document.getElementById('beautify-cnblogs-sidebar-custom-wrapper');
+                            setTimeout(function() {
+                                var blogNews = document.getElementById('blog-news');
+                                var profileBlock = document.getElementById('profile_block');
+                                var children = wrapper.children;
+                                var fragment = document.createDocumentFragment();
+                                while (children.length > 0) {
+                                    fragment.append(children[0]);
+                                }
+                                fragment.append(profileBlock);
+                                blogNews.append(fragment);
+                            }, 1000);
+                        } catch (error) {
+                            console.error(error);
+                        }
+                    </script>
+                    <div id="blog-news">
                         <div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/zhihuilai/">智辉</a><br>园龄：<a
                                 href="https://home.cnblogs.com/u/zhihuilai/" title="入园时间：2016-03-13">2年6个月</a><br>粉丝：<a
                                 href="https://home.cnblogs.com/u/zhihuilai/followers/">13</a><br>关注：<a
