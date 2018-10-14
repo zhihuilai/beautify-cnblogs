@@ -1,0 +1,49 @@
+#mainContent {
+    .post {
+        .hljs- {
+            &comment {
+                color: #ADADAD;
+            }
+            &keyword {
+                color: #2FB82C;
+            }
+            &params {
+                color: #f5871f;
+            }
+            &built_in {
+                color: #FF4FE0;
+            }
+            &tag {
+                color: #8689E7;
+            }
+            &name {
+                color: #0058CF;
+            }
+            &op {
+                color: #8689E7;
+            }
+            &attr {
+                color: #0BAA6A;
+            }
+            &string {
+                color: #39A6A6;
+            }
+            &number {
+                color: #0088FF;
+            }
+            &title {
+                color: #0698D0;
+            }
+            &tag .hljs-string {
+                color: #DD4826;
+            }
+            &selector-id,
+            &selector-class {
+                color: #0000FF;
+            }
+            &attribute {
+                color: #0BAA20;
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 {
   "name": "beautify-cnbologs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "beautify cnblogs",
   "main": "index.js",
   "scripts": {
@@ -26,13 +26,13 @@
   "homepage": "https://github.com/zhihuilai/beautify-cnblogs#readme",
   "devDependencies": {
     "@babel/core": "^7.1.0",
-    "art-template": "4.12.1",
+    "@babel/preset-env": "^7.1.0",
+    "art-template": "^4.13.1",
     "art-template-loader": "^1.4.3",
     "autoprefixer": "^9.1.5",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
@@ -46,6 +46,7 @@
     "install": "^0.12.1",
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
@@ -56,6 +57,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
-    "postcss-loader": "^3.0.0"
+    "postcss-loader": "^3.0.0",
+    "promise-polyfill": "^8.1.0"
   }
 }

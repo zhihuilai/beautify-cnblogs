@@ -1,0 +1,1 @@
+exports.blogUserName = 'zhihuilai';

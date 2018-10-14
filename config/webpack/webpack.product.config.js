@@ -2,15 +2,28 @@ const path = require('path');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const packageJson = require('../../package.json');
-const base = require('./webpack.base.config');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
+const packageJson = require('../../package.json');
+const base = require('./webpack.base.config');
+const { blogUserName } = require('../customfile');
+const jsName = 'beautify-cnblogs';
+const version = packageJson.version;
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const templateParameters = {
+    env: 'production',
+    blogUserName,
+    jsName: `${jsName}-${version}.min.js`
+};
+
+const minify = {
+    collapseWhitespace: true,
+};
 
 let prod = {
     entry: {
-        'beautify-cnblogs': path.resolve(__dirname, '../../src/index.js'),
+        [`${jsName}`]: path.resolve(__dirname, '../../src/index.js'),
     },
     plugins: [
         new CleanWebpackPlugin(['dist/*'], {
@@ -24,36 +37,43 @@ let prod = {
                 },
             },
         }),
+        new OptimizeCSSAssetsPlugin({}),
         new HtmlWebpackPlugin({
             filename: "footer.html",
-            template: './src/footer.html',
+            template: './src/template/footer.html',
             inject: false,
+            templateParameters,
+            minify,
         }),
         new HtmlWebpackPlugin({
             filename: "header.html",
-            template: './src/header.html',
+            template: './src/template/header.html',
             inject: false,
+            templateParameters,
+            minify,
         }),
         new HtmlWebpackPlugin({
             filename: "sidebar.html",
-            template: './src/sidebar.html',
+            template: './src/template/sidebar.html',
             inject: false,
+            templateParameters,
+            minify,
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].min.css',
-            chunkFilename: '[id].min.css',
+            filename: `[name]-${version}.min.css`,
+            chunkFilename: `[name]-${version}.min.css`,
         })
         // new FileManagerPlugin({
         //     onEnd: {
         //         copy: [{
-        //             source: path.resolve(__dirname, `../dist/spa-downloader.min.js`),
-        //             destination: path.resolve(__dirname, `../dist/spa-downloader-${packageJson.version}.min.js`)
+        //             source: path.resolve(__dirname, `../dist/xxx`),
+        //             destination: path.resolve(__dirname, `../dist/xxx`)
         //         }]
         //     }
         // }),
     ],
     output: {
-        filename: `[name]-${packageJson.version}.min.js`,
+        filename: `[name]-${version}.min.js`,
         path: path.resolve(__dirname, '../../dist'),
     },
     mode: 'production',

@@ -2,6 +2,8 @@ const path = require('path');
 const merge = require('webpack-merge');
 const base = require('./webpack.base.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { blogUserName } = require('../customfile');
 
 let dev = {
     entry: {
@@ -20,8 +22,9 @@ let dev = {
             template: './example/post-template.html',
             inject: false,
             templateParameters: {
-                title: 'hello',
+                title: '文章页',
                 env: 'development',
+                blogUserName,
             },
         }),
         new HtmlWebpackPlugin({
@@ -31,11 +34,16 @@ let dev = {
             templateParameters: {
                 title: '列表页',
                 env: 'development',
+                blogUserName,
             },
         }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        })
     ],
     output: {
-        filename: '[name].min.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, '../../example'),
     },
     mode: 'development',

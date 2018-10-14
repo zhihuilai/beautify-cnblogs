@@ -1,4 +1,3 @@
-const devMode = process.env.NODE_ENV !== 'production';
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
@@ -17,7 +16,7 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['babel-preset-env'],
+                            presets: ['@babel/preset-env'],
                             plugins: [
                                 ['transform-class-properties'],
                             ],
@@ -34,11 +33,14 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'art-template-loader',
+                options: {
+                    htmlResourceRules: false,
+                }
             },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
@@ -53,4 +55,7 @@ module.exports = {
             }
         ],
     },
+    externals: {
+        jquery: 'jQuery', // 博客园引入了 jquery，当前版本是 2.2.0 - 2018年10月14日
+    }
 };

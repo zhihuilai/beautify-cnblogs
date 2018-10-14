@@ -1,0 +1,35 @@
+#mainContent {
+    .post {
+        p > code,
+        li > code {
+            margin-top: -2px;
+            height: 20px;
+            line-height: 20px;
+        }
+        .cnblogs-markdown {
+            blockquote {
+                border-top: none;
+                border-right: none;
+                border-bottom: none;
+            }
+            code {
+                font-family: Consolas, Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !important;
+                font-size: 14px !important;
+            }
+            code * {
+                font-family: Consolas, Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !important;
+            }
+            pre {
+                background-color: #fbfbfb;
+                border: none;
+                border-radius: 0;
+                code {
+                    border: none!important;
+                    background: transparent!important;
+                }
+            }
+        }
+    }
+}
+
+@import "./hightlight";
