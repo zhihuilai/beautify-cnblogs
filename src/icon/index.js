@@ -1,2 +1,1 @@
-import './init';
-import './iconfont';
+export { insertIcon, DEST } from './utils';

@@ -1,0 +1,282 @@
+@import "@/default.scss";
+
+@mixin side-bar-block {
+    opacity: 0;
+    padding: 14px 10px;
+    box-sizing: border-box;
+    background: #ffffff;
+    margin-top: 30px;
+    border-radius: 6px !important;
+}
+
+#side-bar-trigger {
+    margin-right: calc(100% - 100vw);
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background: $normal-blue;
+    color: #ffffff;
+    position: fixed;
+    right: 30px;
+    bottom: 38px;
+    z-index: 3;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 50%;
+    font-weight: lighter;
+    cursor: pointer;
+    transform: rotate(90deg) translate3d(0, 0, 0);
+    transition: transform 0.3s;
+    -webkit-user-select: none;
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:hover {
+        background: $cursor-blue;
+    }
+}
+
+body.side-bar-show {
+    overflow: hidden !important;
+}
+
+.side-bar-show {
+    #side-bar-trigger {
+        transform: rotate(225deg);
+    }
+    #side-bar-mask {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+    }
+}
+
+#sideBar {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: auto;
+    margin: 0 !important;
+    -webkit-overflow-scrolling: touch;
+    z-index: 2;
+    #sideBarMain {
+        position: absolute;
+        top: 60px;
+        right: 100px;
+        max-width: 300px;
+        padding-bottom: 40px;
+        background: transparent;
+    }
+    .catListTitle {
+        margin: 0 0 14px 0;
+    }
+    .newsItem {
+        @include side-bar-block;
+        #blog-news {
+            a {
+                text-decoration: none;
+                color: #000000;
+                &:hover {
+                    color: $cursor-blue;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    #blog-calendar {
+        @include side-bar-block;
+        padding: 0;
+        max-width: 300px;
+        font-size: 14px;
+        border: solid 1px #E5E5E5;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        border-radius: 6px;
+        .CalDayHeader {
+            font-weight: normal;
+            font-size: 12px;
+            color: #666;
+        }
+        #blogCalendar {
+            padding: 5px 5px 10px 5px;
+        }
+        .CalTitle {
+            width: 100%;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            .CalNextPrev,
+            .CalNextPrev {
+                text-align: center;
+            }
+            a {
+                display: inline-block;
+                color: #3399ff;
+            }
+        }
+        a > u {
+            color: #3399ff;
+        }
+        tr:not(:first-child) {
+            height: 28px;
+            line-height: 25px;
+        }
+        td {
+            height: 28px;
+            line-height: 28px;
+            vertical-align: middle;
+            font-size: 12px;
+            color: #666;
+        }
+        .CalOtherMonthDay {
+            color: #cccccc;
+        }
+        .CalTodayDay {
+            position: relative;
+            &::after {
+                position: absolute;
+                display: block;
+                content: '';
+                width: 22px;
+                height: 22px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: solid 1px $normal-blue;
+                border-radius: 2px;
+            }
+        }
+    }
+    #sidebar_search_box {
+        .input_my_zzk {
+            box-sizing: border-box;
+            padding: 2px 6px;
+            margin: 4px 0;
+            width: 66%;
+            height: 30px;
+            border-radius: 4px;
+            border: solid 1px $normal-gray;
+            outline: none;
+            &:hover {
+                border: solid 1px $gray-color;
+            }
+            &:focus {
+                border: solid 1px $cursor-blue;
+            }
+        }
+        .btn_my_zzk {
+            margin: 4px 0 2% 4px;
+            box-sizing: border-box;
+            width: 30%;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 4px;
+            background-color: $normal-blue;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                background-color: $cursor-blue;
+            }
+        }
+    }
+    #sidebar_shortcut {
+        @include clearFix;
+        li {
+            float: left;
+            width: 33%;
+            letter-spacing: 2px;
+        }
+    }
+    .sidebar-block {
+        @include side-bar-block;
+        ul {
+            padding: 0;
+            margin: 0;
+            li {
+                list-style-type: none;
+            }
+        }
+        a {
+            height: 24px;
+            line-height: 24px;
+            text-decoration: none;
+            color: #000000;
+            font-size: 14px;
+            &:hover {
+                color: $cursor-blue;
+                text-decoration: underline;
+            }
+        }
+        #RecentCommentsBlock {
+            .recent_comment_body {
+                padding: 10px 14px;
+                font-size: 14px;
+            }
+            .recent_comment_title {
+                margin-top: 16px;
+            }
+            .recent_comment_title,
+            .recent_comment_author {
+                font-size: 12px;
+                color: $gray-color !important;
+                a {
+                    color: $gray-color !important;
+                }
+            }
+        }
+    }
+}
+
+.side-bar-show {
+    #sideBar {
+        visibility: visible;
+    }
+    .newsItem {
+        opacity: 1 !important;
+        transition: opacity 0.4s;
+    }
+    #blog-calendar {
+        opacity: 1 !important;
+        transition: opacity 0.8s;
+    }
+    #sidebar_search {
+        opacity: 1 !important;
+        transition: opacity 1.2s;
+    }
+    #sidebar_shortcut {
+        opacity: 1 !important;
+        transition: opacity 1.6s;
+    }
+    #sidebar_toptags {
+        opacity: 1 !important;
+        transition: opacity 2s;
+    }
+    #sidebar_categories {
+        opacity: 1 !important;
+        transition: opacity 2s;
+    }
+    #sidebar_recentcomments {
+        opacity: 1 !important;
+        transition: opacity 1.6s;
+    }
+    #sidebar_topviewedposts {
+        opacity: 1 !important;
+        transition: opacity 1.2s;
+    }
+    #sidebar_topcommentedposts {
+        opacity: 1 !important;
+        transition: opacity 0.8s;
+    }
+    #sidebar_topdiggedposts {
+        opacity: 1 !important;
+        transition: opacity 0.4s;
+    }
+}

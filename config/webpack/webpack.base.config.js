@@ -1,3 +1,4 @@
+const devMode = process.env.NODE_ENV !== 'production';
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
 
@@ -6,6 +7,11 @@ module.exports = {
         library: 'BeautifyCNBlogs',
         libraryExport: 'default',
         libraryTarget: 'window',
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, '../../src'),
+        },
     },
     module: {
         rules: [
@@ -40,7 +46,7 @@ module.exports = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',

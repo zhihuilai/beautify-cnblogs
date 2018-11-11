@@ -1,0 +1,32 @@
+@import "@/default.scss";
+
+.day {
+    max-width: 710px;
+    margin: 0 auto;
+    padding: 10px;
+    .dayTitle {
+        display: none;
+    }
+    .postTitle {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 20px 0;
+        a {
+            text-decoration: none;
+            color: #000000;
+            &:hover {
+                color: $cursor-blue;
+                text-decoration: underline;
+            }
+        }
+    }
+    .postCon {
+        a {
+            color: $gray-color;
+            &:hover {
+                color: $cursor-blue;
+                text-decoration: underline;
+            }
+        }
+    }
+}

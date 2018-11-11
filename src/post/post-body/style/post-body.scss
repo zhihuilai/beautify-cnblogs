@@ -1,12 +1,12 @@
 @import "./cnblogs-markdown-style";
+@import "@/default.scss";
 
 #mainContent  {
     .post {
-        max-width: 690px;
-        margin: 0 auto;
-        padding: 0 10px;
+        @include main-container;
         .postTitle {
             margin: 40px 0;
+            font-size: 2em !important;
         }
         .postTitle a {
             text-decoration: none;
@@ -14,6 +14,7 @@
         }
         img {
             max-width: 100% !important;
+            width: 100%;
         }
         p {
             margin: 0 0 25px 0;

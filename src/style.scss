@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.not-mobile-device {
+    &::-webkit-scrollbar { // 整个滚动条.
+        width: 5px;
+        height: 5px;
+        background: #eeeeee;
+    }
+
+    &::-webkit-scrollbar-thumb { // 滚动条上的滚动滑块.
+        background: #d0d0d0;
+    }
+
+    ::-webkit-scrollbar { // 整个滚动条.
+        width: 5px;
+        height: 5px;
+        background: #eeeeee;
+    }
+
+    ::-webkit-scrollbar-thumb { // 滚动条上的滚动滑块.
+        background: #d0d0d0;
+    }
+}
+
+#mainContent {
+    .forFlow {
+        margin-left: calc(100vw - 100%);
+    }
+}

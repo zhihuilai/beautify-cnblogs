@@ -1,9 +1,10 @@
-@import "../utils";
+@import "../default";
 
 #header {
     height: 50px;
     box-shadow: 0 1px 3px 0 rgba(23,81,153,.05);
     @include clearFix;
+    margin-right: calc(100% - 100vw);
     #blogTitle {
         float: left;
         #lnkBlogLogo {

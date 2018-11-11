@@ -1,0 +1,168 @@
+@mixin side-bar {
+     #sideBarMain {
+         #blog-calendar {
+             max-width: none;
+         }
+         top: 10px !important;
+         max-width: none !important;
+         right: 30px !important;
+         left: 30px;
+    }
+}
+@media (max-width: 319px) {
+    // 宽度小于 iphone 5
+    #blog_stats {
+        display: none;
+    }
+    #blog_nav_admin {
+        display: none;
+    }
+    #green_channel_favorite {
+        display: none !important;
+    }
+    #blog_post_info_block #div_digg .diggnum,
+    #blog_post_info_block #div_digg .burynum {
+        padding: 0 !important;
+    }
+    .postDesc {
+        a:first-of-type,
+        a:last-child {
+            display: none;
+        }
+    }
+    .blog_comment_body {
+        padding-right: 16px !important;
+    }
+    #side-bar-trigger {
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    @include side-bar;
+    .postTitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 359px) {
+    // 宽度大于等于 iphone 5 小于 小米6、华为等
+    #blog_stats {
+        display: none;
+    }
+    #blog_nav_admin {
+        display: none !important;
+    }
+    #green_channel_favorite {
+        display: none !important;
+    }
+    #blog_post_info_block #div_digg .diggnum,
+    #blog_post_info_block #div_digg .burynum {
+        padding: 0 4px !important;
+    }
+    .postDesc {
+        a:first-of-type,
+        a:last-child {
+            display: none;
+        }
+    }
+    .blog_comment_body {
+        padding-right: 16px !important;
+    }
+    #side-bar-trigger {
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    @include side-bar;
+    .postTitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 374px) {
+    // 宽度大于等于 小米 6、华为等， 小于 iphone 6
+    #blog_stats {
+        display: none;
+    }
+    #header #navigator #navList li > a {
+        padding: 0 8px;
+    }
+    #green_channel_favorite {
+        display: none !important;
+    }
+    .postDesc {
+        a:first-of-type,
+        a:last-child {
+            display: none;
+        }
+    }
+    .blog_comment_body {
+        padding-right: 16px !important;
+    }
+    #side-bar-trigger {
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    @include side-bar;
+    .postTitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 413px) {
+    // 宽度大于等于 iphone 6 小于 iphone 6 plus
+    #blog_stats {
+        display: none;
+    }
+    #green_channel_favorite {
+        display: none !important;
+    }
+    .postDesc {
+        a:first-of-type,
+        a:last-child {
+            display: none;
+        }
+    }
+    .blog_comment_body {
+        padding-right: 16px !important;
+    }
+    #side-bar-trigger {
+        right: 20px;
+    }
+    @include side-bar;
+    .postTitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (min-width: 414px) and (max-width: 767px) {
+    // 宽度大于等于 iphone 6 plus 小于 ipad
+    #blog_stats {
+        display: none;
+    }
+    #green_channel_favorite {
+        display: none !important;
+    }
+    .postDesc {
+        a:first-of-type,
+        a:last-child {
+            display: none;
+        }
+    }
+    .blog_comment_body {
+        padding-right: 16px !important;
+    }
+    @include side-bar;
+    .postTitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    // 宽度大于等于 ipad
+
+}

@@ -1,0 +1,24 @@
+@mixin clearFix {
+    &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+    }
+}
+
+@mixin main-container {
+    max-width: 690px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+$gray-color: #8590a6;
+$normal-blue: #148eff;
+$cursor-blue: #0084ff;
+$link-blue: #0366d6;
+$normal-gray: #d9d9d9;
+$light-gray: #ebebeb;
+$x-light-gray: #f9f9f9;

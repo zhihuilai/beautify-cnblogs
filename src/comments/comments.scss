@@ -1,0 +1,200 @@
+@import "@/default.scss";
+
+#blog-comments-placeholder,
+#comment_form {
+    @include main-container;
+}
+
+#blog-comments-placeholder {
+    .feedback_area_title {
+        font-weight: bold;
+        margin: 40px 0 20px 0;
+    }
+    .feedbackItem {
+        padding: 34px 0;
+        border-top: solid 1px $light-gray;
+        border-bottom: solid 1px $light-gray;
+        margin-bottom: -1px;
+        .custom-avatar {
+            display: inline-block;
+            margin-right: 4px;
+            border-radius: 50%;
+            width: 30px;
+            vertical-align: middle;
+            border: solid 1px $light-gray;
+        }
+        .feedbackListSubtitle { // 回复、引用、删除，楼层、评论时间、评论人
+            vertical-align: middle;
+            color: $gray-color;
+            a, span {
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+                color: $gray-color;
+                vertical-align: middle;
+                text-decoration: none;
+            }
+            .icon {
+                &:hover {
+                    color: $cursor-blue !important;
+                }
+            }
+            a {
+                &:hover {
+                    color: $cursor-blue;
+                }
+            }
+            @include clearFix;
+            .feedbackManage { // 回复、引用、删除
+                float: right;
+            }
+            .sendMsg2This {
+                padding-left: 4px;
+                background: none;
+                .icon {
+                    color: $gray-color;
+                }
+            }
+        }
+        .feedbackCon {
+            .blog_comment_body {
+                padding: 20px 40px;
+                line-height: 24px;
+                a {
+                    color: #000;
+                    &:hover {
+                        color: $cursor-blue;
+                    }
+                }
+                img {
+                    width: 100%;
+                    max-width: none;
+                    max-height: none;
+                }
+                .syntaxhighlighter {
+                    margin: 0!important;
+                    .gutter {
+                        width: 16px !important;
+                        .line {
+                            border-right: solid 2px #e0e0e0 !important;
+                        }
+                    }
+                    .line.alt2 {
+                        background-color: transparent !important;
+                    }
+                    .keyword {
+                        color: #2FB82C !important;
+                    }
+                    .string {
+                        color: #39A6A6 !important;
+                    }
+                    .comments {
+                        color: #ADADAD !important;
+                    }
+                    .code * {
+                        white-space: pre !important;
+                    }
+                }
+            }
+            .comment_vote {
+                a {
+                    color: $gray-color;
+                    &:hover {
+                        color: $cursor-blue;
+                    }
+                }
+            }
+            .comment_quote {
+                display: block;
+                box-sizing: border-box;
+                padding: 0 15px;
+                color: #545353;
+                border: none;
+                border-left: 4px solid #ddd;
+                legend {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#comment_form {
+    #comment_nav {
+        margin: 10px 0;
+        a {
+            color: $gray-color;
+            text-decoration: none;
+            &:hover {
+                color: $cursor-blue;
+            }
+        }
+    }
+    #comment_form_container {
+        #commentform_title {
+            padding: 0;
+            margin: 16px 0;
+            background: none;
+            font-weight: bold;
+        }
+        p {
+            > input {
+                background: none;
+                padding: 0;
+                border: none;
+                font-size: 18px;
+                vertical-align: middle;
+            }
+        }
+        .login_tips {
+            background: none;
+            font-weight: normal;
+            padding: 0;
+            margin-top: 60px;
+            a {
+                color: $gray-color;
+                &:hover {
+                    color: $cursor-blue;
+                }
+                &:last-child {
+                    margin-right: 4px;
+                }
+            }
+        }
+    }
+    .commentbox_title {
+        width: 100%;
+    }
+    #tbCommentBody {
+        margin-top: 6px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        &:focus {
+            border: solid 1px $cursor-blue;
+        }
+    }
+    #commentbox_opt {
+        #btn_comment_submit {
+            height: 22px;
+            line-height: 22px;
+            float: right;
+            padding: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            color: #ffffff;
+            background: $normal-blue;
+            border-radius: 2px;
+            vertical-align: middle;
+            box-sizing: content-box;
+            &:hover {
+                background: $cursor-blue;
+            }
+        }
+        a {
+            display: none;
+        }
+    }
+
+}

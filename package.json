@@ -1,6 +1,6 @@
 {
   "name": "beautify-cnbologs",
-  "version": "1.0.1",
+  "version": "1.0.19",
   "description": "beautify cnblogs",
   "main": "index.js",
   "scripts": {
