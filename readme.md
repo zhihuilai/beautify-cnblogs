@@ -14,6 +14,8 @@
 * dist/header.html -> 博客园设置/页首Html代码
 * dist/sidebar.html -> 博客园设置/博客侧边栏公告
 
+注：博客皮肤需要切换成 CodingLife
+
 # install
 windows:   
 1. 安装 windows-build-tools
