@@ -52,13 +52,13 @@
                 }
                 #author_profile_detail {
                     float: right;
+                    text-align: left;
                     a {
                         font-size: 12px;
                         padding: 0;
                         height: 12px;
                         line-height: 12px;
                         &:first-child {
-                            margin-left: -3px;
                             margin-top: 6px;
                         }
                         &:last-child {

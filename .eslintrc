@@ -18,6 +18,7 @@
   "rules": {
     "no-console": ["error", { "allow": ["log", "warn", "error", "info"] }], // console.log 正式环境会被 drop 掉
     "no-alert": "off",
+    "no-new": "off",
     "indent": [2, 4],
     "comma-dangle": ["error", "always-multiline"]
   }

@@ -3,3 +3,6 @@
 <% } else { %>
     <script src="//blog-static.cnblogs.com/files/{{blogUserName}}/{{jsName}}"></script>
 <% } %>
+<% for (let i = 0; i < jsList.length; i++) { %>
+    <script src="<%- jsList[i] %>"></script>
+<% } %>

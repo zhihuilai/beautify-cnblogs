@@ -20,6 +20,7 @@
             margin-right: 4px;
             border-radius: 50%;
             width: 30px;
+            height: 30px;
             vertical-align: middle;
             border: solid 1px $light-gray;
         }
@@ -142,8 +143,10 @@
                 background: none;
                 padding: 0;
                 border: none;
-                font-size: 18px;
+                font-size: 16px;
                 vertical-align: middle;
+                height: 20px;
+                line-height: 20px;
             }
         }
         .login_tips {
@@ -170,6 +173,7 @@
         box-sizing: border-box;
         width: 100%;
         padding: 10px;
+        outline: none;
         &:focus {
             border: solid 1px $cursor-blue;
         }

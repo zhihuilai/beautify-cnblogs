@@ -9,7 +9,7 @@ function showAvatar() {
     $commentVotes.each((index, commentVote) => {
         const $avatarSpan = $(commentVote).next();
         const image = document.createElement('img');
-        let avatarUrl = 'http://pic.cnitblog.com/face/sample_face.gif';
+        let avatarUrl = '//pic.cnblogs.com/face/sample_face.gif';
         console.log($avatarSpan);
         if ($avatarSpan.length !== 0) {
             avatarUrl = $avatarSpan.html();

@@ -1,6 +1,6 @@
 {
   "name": "beautify-cnbologs",
-  "version": "1.0.19",
+  "version": "1.0.25",
   "description": "beautify cnblogs",
   "main": "index.js",
   "scripts": {
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "postcss-loader": "^3.0.0",
-    "promise-polyfill": "^8.1.0"
+    "promise-polyfill": "^8.1.0",
+    "viewerjs": "^1.3.0"
   }
 }

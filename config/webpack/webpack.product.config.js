@@ -2,19 +2,20 @@ const path = require('path');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 const packageJson = require('../../package.json');
 const base = require('./webpack.base.config');
-const { blogUserName } = require('../customfile');
+const { blogUserName, jsList } = require('../customfile');
 const jsName = 'beautify-cnblogs';
 const version = packageJson.version;
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const templateParameters = {
     env: 'production',
     blogUserName,
-    jsName: `${jsName}-${version}.min.js`
+    jsName: `${jsName}-${version}.min.js`,
+    jsList,
 };
 
 const minify = {
